@@ -20,30 +20,20 @@ public class Business {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String alias;
-
     private String name;
-
     private String imageUrl;
-
     private Boolean isClosed;
-
     private String url;
-
     private Integer reviewCount;
-
     private String rating;
 
     @ManyToMany
     private List<Category> categories;
-
     private String price;
 
     private String phone;
-
     private String displayPhone;
-
     private String distance;
-
     private Integer photosCount;
 
     @JdbcTypeCode(SqlTypes.JSON)
@@ -55,11 +45,8 @@ public class Business {
     private List<OpeningHour> specialHours;
 
     private Boolean isClaimed;
-
     private String dateOpened;
-
     private String dateClosed;
-
     private String businessType;
 
     @ManyToMany

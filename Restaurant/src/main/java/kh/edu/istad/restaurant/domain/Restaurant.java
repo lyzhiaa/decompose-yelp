@@ -1,4 +1,5 @@
-package kh.edu.istad.business.domain;
+package kh.edu.istad.restaurant.domain;
+
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.awt.*;
 import java.util.List;
 
 @Getter
@@ -13,13 +15,13 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Category {
+public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String title;
-    private String alias;
+    private Long id;
 
-    @ManyToMany
-    private List<Business> businesses;
+    private String businessAlias;
+
+    @OneToMany
+    private List<MenuItem> menuItems;
 }

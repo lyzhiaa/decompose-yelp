@@ -1,35 +1,39 @@
 package kh.edu.istad.userprofile.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.xml.stream.Location;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
-@Builder
 @AllArgsConstructor
+@Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
-    @Column(unique = true)
-    private String uuid;
+    private String lastName;
 
-    @Column(unique = true)
-    private String username;
+    private String firstName;
 
-    private String password;
-
-    @Column(unique = true)
     private String email;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinTable(name = "users_authorities")
-    @JsonIgnore
-    private Set<Authority> authorities;
+    private String profilePicture;
+
+    private String phoneNumber;
+
+    private String nickName;
+
+    private String headLine;
+
+    private String bio;
 
 }
