@@ -1,0 +1,9 @@
+services:
+  postgres:
+    image: postgres:16.4
+    environment:
+      POSTGRES_DB: db-decompose-yelp-2
+      POSTGRES_USER: decompose-yelp
+      POSTGRES_PASSWORD: yelp@12345
+    ports:
+      - "5446:5432"
