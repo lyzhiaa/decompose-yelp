@@ -3,6 +3,7 @@ package kh.edu.istad.restaurant.domain;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "reservations")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,15 +23,27 @@ public class Reservation {
 
     private LocalDateTime reservationDateTime;
 
-    private Integer numberOfPeople;
-
-    private String customerName;
-
-    private String customerEmail;
-
-    private String customerPhone;
+    private Integer partySize;
 
     private String specialRequest;
 
-    private String reservationStatus;
+    private String reservationStatus;   // (e.g., "Pending", "Confirmed", "Cancelled")
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+//
+//    private LocalDateTime reservationDateTime;
+//
+//    private Integer numberOfPeople;
+//
+//    private String customerName;
+//
+//    private String customerEmail;
+//
+//    private String customerPhone;
+//
+//    private String specialRequest;
+//
+//    private String reservationStatus;
+
 }

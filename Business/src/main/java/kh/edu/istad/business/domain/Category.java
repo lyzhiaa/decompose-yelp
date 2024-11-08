@@ -13,13 +13,24 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "categories")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String title;
+
+    @Column(unique = true, nullable = false, length = 60)
+    private String name;
+
+    @Column(unique = true, nullable = false, length = 100)
     private String alias;
 
-    @ManyToMany
-    private List<Business> businesses;
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+    private String icon;
+
+    @ManyToOne(optional = true, fetch = FetchType.LAZY)
+    private Category parentCategory;
+
 }

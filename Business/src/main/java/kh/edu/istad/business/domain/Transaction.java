@@ -1,25 +1,27 @@
 package kh.edu.istad.business.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import kh.edu.istad.business.config.jpa.Auditable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-public class Transaction {
+@Entity
+@Table(name = "transactions")
+public class Transaction extends Auditable<String> {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String type;
 
+    @Column(unique = true, nullable = false)
+    private String type; // delivery | pickup | restaurant_reservation | hotel_booking
+
+    @Column(unique = true, nullable = false)
     private String alias;
 
 }

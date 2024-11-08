@@ -1,1 +1,13 @@
-spring.application.name=Business
+server:
+  port: 8081
+spring:
+  application:
+    name: business
+  profiles:
+    active: dev
+  config:
+    import: "configserver:http://localhost:1688"
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

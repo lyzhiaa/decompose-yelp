@@ -12,16 +12,25 @@ import java.util.List;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "restaurants")
 public class Restaurant {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String businessAlias;
 
-    @OneToMany
+    @OneToMany(mappedBy = "restaurant")
     private List<MenuItem> menuItems;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+//
+//    private String businessAlias;
+//
+//    @OneToMany
+//    private List<MenuItem> menuItems;
 }

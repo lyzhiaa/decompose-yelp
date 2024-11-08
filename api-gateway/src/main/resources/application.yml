@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: api-gateway
+  profiles:
+    active: dev
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: "http://localhost:1688"
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: yelp-web-app #Register frontend (Next.js)
+          uri: http://localhost:3000/
+          predicates:
+            - Path=/**
+        - id: business #Register category in business
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/business/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  health:
+    readiness-state:
+      enable: true
+    liveness-state:
+      enabled: true
+  endpoint:
+    gateway:
+      enabled: true
+    health:
+      probes:
+        enabled: true
+      show-details: always
